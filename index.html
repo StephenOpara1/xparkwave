@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xparkwave Studio — Stephen Opara Portfolio</title>
+    <meta name="description" content="Portfolio of Stephen Opara, Full Stack Developer and independent learner operating under Xparkwave Studio.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #090d16;
+            --bg-surface: #111827;
+            --bg-surface-hover: #1f2937;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(99, 102, 241, 0.4);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-primary: #6366f1;
+            --accent-secondary: #818cf8;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility classes */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        .logo-img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-secondary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* 1. Landing / Hero Section */
+        #landing {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(9, 13, 22, 0.95) 0%, rgba(9, 13, 22, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            background: var(--accent-glow);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            color: var(--accent-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-content p {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            color: var(--text-muted);
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        /* Section Headings */
+        .section-title {
+            font-size: clamp(2rem, 3vw, 2.75rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 3rem;
+            color: #ffffff;
+        }
+
+        .section-title span {
+            color: var(--accent-secondary);
+        }
+
+        /* 2. Profile Section */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-photo-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .profile-photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-placeholder {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            padding: 2rem;
+        }
+
+        .profile-text p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-text p:first-child {
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 1.25rem;
+        }
+
+        /* 3. Experience Stats Section */
+        .stats-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .stat-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem 5rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px var(--accent-glow);
+        }
+
+        .stat-number {
+            font-size: clamp(3.5rem, 6vw, 5rem);
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* 4. Skills and Tools Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: var(--transition);
+        }
+
+        .skill-category-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .skill-category-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 0.6rem 1.1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-glow);
+            border-color: var(--accent-primary);
+            color: var(--accent-secondary);
+        }
+
+        /* 5. Software Projects Section */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .project-visual {
+            background: rgba(0,0,0,0.2);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .project-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .project-placeholder-box {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 2rem;
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-header h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-subtitle {
+            font-size: 0.95rem;
+            color: var(--accent-secondary);
+            font-family: var(--font-mono);
+            margin-bottom: 1.25rem;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .project-features li {
+            position: relative;
+            padding-left: 1.25rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-features li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-secondary);
+            font-weight: bold;
+        }
+
+        .project-meta-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+
+        /* 6. Other Applications and Experiments */
+        .experiments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .experiment-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .experiment-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(234, 179, 8, 0.1);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            color: #facc15;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            align-self: flex-start;
+            margin-bottom: 1.25rem;
+        }
+
+        .experiment-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .experiment-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Galleries (Landing & 3D) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            border-color: var(--border-hover);
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .gallery-fallback {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* 9. Mathematical Research */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .research-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .research-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .research-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .research-card a {
+            color: var(--accent-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .research-card a:hover {
+            text-decoration: underline;
+            color: #ffffff;
+        }
+
+        .research-doc-placeholder {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+
+        /* 10. Strengths Section */
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .strength-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .strength-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .strength-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+
+        .strength-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* 11. Interests Section */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .interest-pill {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .interest-pill:hover {
+            border-color: var(--accent-primary);
+            background: var(--accent-glow);
+            color: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        .interest-icon {
+            font-size: 1.25rem;
+        }
+
+        /* 12. Contacts Section */
+        .contacts-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contacts-wrapper p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 3rem;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            border-color: var(--border-hover);
+            background: var(--accent-glow);
+            transform: translateY(-4px);
+            color: var(--accent-secondary);
+        }
+
+        .contact-card svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        .contact-card span {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .code-placeholder-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            margin-top: 0.25rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 968px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+                justify-items: center;
+            }
+            .profile-photo-card {
+                width: 260px;
+            }
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+            .project-visual {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(9, 13, 22, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                border-bottom: 1px solid var(--border-color);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease-in-out;
+                box-shadow: 0 20px 30px rgba(0,0,0,0.5);
+            }
+            .nav-links.open {
+                transform: translateY(0);
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            section {
+                padding: 4rem 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#landing" class="logo-link">
+                <img src="xparkwave-freelance.jpg" alt="Xparkwave Studio Logo" class="logo-img" onerror="this.style.display='none'">
+                <span>Xparkwave</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation menu">☰</button>
+            <ul class="nav-links">
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experiments">Experiments</a></li>
+                <li><a href="#landing-designs">Landing Designs</a></li>
+                <li><a href="#3d-work">3D Work</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#strengths">Strengths</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#contacts">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Landing Page Section -->
+        <section id="landing" style="background-image: url('background-image.jpg');">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+    
+                <h1>Stephen Opara</h1>
+                <p>Full Stack Developer</p>
+            </div>
+        </section>
+
+        <!-- 2. Profile Section -->
+        <section id="profile">
+            <div class="container">
+                <h2 class="section-title">A little about <span>me.</span></h2>
+                <div class="profile-grid">
+                    <div class="profile-photo-card">
+                        <img src="profile-photo.jpg" alt="Stephen Opara profile photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="profile-placeholder" style="display:none;">
+                            <p>[ Profile Photo Placeholder ]</p>
+                        </div>
+                    </div>
+                    <div class="profile-text">
+                        <p>I'm Stephen Opara, a full-stack developer and independent learner interested in technology, mathematics, and the process of turning ideas into reality.</p>
+                        <p>I've built web applications, worked with clients through Xparkwave Studio, and explored projects that go beyond conventional web development. I'm curious by nature, and I enjoy learning how things work just as much as I enjoy building them.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Experience Stats Section -->
+        <section id="experience">
+            <div class="container">
+                <div class="stats-wrapper">
+                    <div class="stat-card">
+                        <div class="stat-number">4+ Years</div>
+                        <div class="stat-label">In the Field</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Skills and Tools Section -->
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">Skills & <span>Tools.</span></h2>
+                <div class="skills-grid">
+                    <div class="skill-category-card">
+                        <h3>Development</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Next.js</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express.js</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Redis</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                            <span class="skill-tag">Git</span>
+                        </div>
+                    </div>
+                    <div class="skill-category-card">
+                        <h3>3D Design</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Blender</span>
+                        </div>
+                    </div>
+                    <div class="skill-category-card">
+                        <h3>Mathematics</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">High Level Math</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Software Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">Software <span>Projects.</span></h2>
+                <div class="projects-list">
+                    <!-- Project A: Wyspar -->
+                    <div class="project-card">
+                        <div class="project-visual">
+                            <img src="wyspar.jpg" alt="Wyspar project screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-placeholder-box" style="display:none;">
+                                <span>[ Wyspar Screenshot Placeholder ]</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <div class="project-subtitle">Independent Full-Stack Product</div>
+                                <h3>Wyspar</h3>
+                                <p class="project-desc">Wyspar is an independent full-stack product: an anonymous social platform built around virtual identities.</p>
+                                <ul class="project-features">
+                                    <li>Anonymous virtual identities</li>
+                                    <li>Optional location labels</li>
+                                    <li>Content categories</li>
+                                    <li>Reactions and comments</li>
+                                    <li>Sharing</li>
+                                    <li>Notifications</li>
+                                </ul>
+                            </div>
+                            <div class="project-meta-note">
+                                Approximately ₦300,000 was invested to start the project. Source repository is private but can potentially be made available for review.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project B: Xparkwave Studio -->
+                    <div class="project-card">
+                        <div class="project-visual">
+                            <img src="xparkwave-freelance.jpg" alt="Xparkwave Studio freelance previews" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-placeholder-box" style="display:none;">
+                                <span>[ Xparkwave Studio Previews Placeholder ]</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <div class="project-subtitle">Freelance Web Development</div>
+                                <h3>Xparkwave Studio</h3>
+                                <p class="project-desc">Professional freelance web development work delivering tailored solutions across diverse categories and technical needs.</p>
+                                <ul class="project-features">
+                                    <li>School websites</li>
+                                    <li>Freelancer portfolio websites</li>
+                                    <li>Business websites</li>
+                                    <li>Discord bots</li>
+                                </ul>
+                            </div>
+                            <div class="project-meta-note">
+                                Created 15+ websites across different projects and client categories, emphasizing adaptability and robust requirements delivery.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project C: Physics Projects -->
+                    <div class="project-card">
+                        <div class="project-visual">
+                            <img src="physics-sim.jpg" alt="N-Body Gravitational Simulation screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-placeholder-box" style="display:none;">
+                                <span>[ Physics Simulation Screenshot Placeholder ]</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div>
+                                <div class="project-subtitle">Physics Simulation Project</div>
+                                <h3>N-Body Gravitational Simulation</h3>
+                                <p class="project-desc">A computational simulation exploring gravitational interactions among N bodies in real time.</p>
+                            </div>
+                            <div class="project-meta-note">
+                                Neutral visual placeholder utilized until real project screenshots are supplied.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Other Applications and Experiments -->
+        <section id="experiments">
+            <div class="container">
+                <h2 class="section-title">Other Applications & <span>Experiments.</span></h2>
+                <div class="experiments-grid">
+                    <div class="experiment-card">
+                        <div>
+                            <h3>Orew</h3>
+                            <p>A location-based service recommendation concept aimed at helping people discover service providers near them when they need to hire someone, such as plumbers, bakers, and other skilled workers based on proximity.</p>
+                        </div>
+                    </div>
+                    <div class="experiment-card">
+                        <div>
+                            <h3>Challenge X</h3>
+                            <p>A concept for an online challenge and competition platform enabling people to create and participate in different kinds of challenges, including dance challenges and competitions judged by public voting or a designated judge.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Landing Page Designs Gallery -->
+        <section id="landing-designs">
+            <div class="container">
+                <h2 class="section-title">Landing Page <span>Designs.</span></h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="landing/1.jpg" alt="Landing page design 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="landing/2.jpg" alt="Landing page design 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="landing/3.jpg" alt="Landing page design 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="landing/4.jpg" alt="Landing page design 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="landing/5.jpg" alt="Landing page design 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="landing/6.jpg" alt="Landing page design 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. 3D Work Gallery -->
+        <section id="3d-work">
+            <div class="container">
+                <h2 class="section-title">3D <span>Work.</span></h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="3D/3D (1).jpg" alt="3D artwork 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="3D/3D (2).jpg" alt="3D artwork 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="3D/3D (3).jpg" alt="3D artwork 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="3D/3D (4).jpg" alt="3D artwork 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="3D/3D (5).jpg" alt="3D artwork 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="3D/3D (6).jpg" alt="3D artwork 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="3D/3D (7).jpg" alt="3D artwork 7" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="3D/3D (8).jpg" alt="3D artwork 8" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="gallery-fallback" style="display:none;">[ Image unavailable ]</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Mathematical Research -->
+        <section id="research">
+            <div class="container">
+                <h2 class="section-title">Mathematical <span>Research.</span></h2>
+                <div class="research-grid">
+                    <div class="research-card">
+                        <div>
+                            <h3>Calculus of Variations</h3>
+                            <p>Explored a new approach to the calculus of variations, investigating foundational principles and alternative problem-solving formulations.</p>
+                        </div>
+                        <div class="research-doc-placeholder">
+                            <a href="https://drive.google.com/file/d/1oVrChBGdmGgoMCrgf1jIbZy4u_qrr8w4/view?usp=drivesdk">See Research Paper</a>
+                        </div>
+                    </div>
+                    <div class="research-card">
+                        <div>
+                            <h3>Zeta Function Research</h3>
+                            <p>Mathematical work focusing on the zeta function, which was reviewed by <a href="https://www.google.com/search?q=Andrew+Granville+mathematician" target="_blank" rel="noopener noreferrer">Andrew Granville</a>, a mathematician renowned for his contributions to number theory.</p>
+                        </div>
+                        <div class="research-doc-placeholder">
+                            <a href="https://drive.google.com/file/d/1E8mgKB5dAK45_2nTrtwePw9MBmzAqPiH/view?usp=drivesdk">See Research Paper</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. Strengths Section -->
+        <section id="strengths">
+            <div class="container">
+                <h2 class="section-title">Core <span>Strengths.</span></h2>
+                <div class="strengths-grid">
+                    <div class="strength-card">
+                        <h3>Independent Learning</h3>
+                        <p>The ability to teach myself unfamiliar subjects, pursue questions independently, and work beyond formal coursework.</p>
+                    </div>
+                    <div class="strength-card">
+                        <h3>Analytical Thinking</h3>
+                        <p>Breaking complex problems into parts, examining relationships, and reasoning through possible solutions.</p>
+                    </div>
+                    <div class="strength-card">
+                        <h3>Attention to Detail</h3>
+                        <p>Noticing small details, inconsistencies, and patterns that can be easy to overlook.</p>
+                    </div>
+                    <div class="strength-card">
+                        <h3>Foresight</h3>
+                        <p>Thinking beyond the immediate problem to anticipate outcomes, consequences, and future possibilities.</p>
+                    </div>
+                    <div class="strength-card">
+                        <h3>Independent Thinking</h3>
+                        <p>Questioning existing approaches and exploring alternative ways to understand problems and develop ideas.</p>
+                    </div>
+                    <div class="strength-card">
+                        <h3>Initiative</h3>
+                        <p>Taking action on ideas, pursuing opportunities, and getting things moving without waiting to be directed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. Interests Section -->
+        <section id="interests">
+            <div class="container">
+                <h2 class="section-title">Personal <span>Interests.</span></h2>
+                <div class="interests-grid">
+                    <div class="interest-pill">
+                        <span class="interest-icon">⚪</span>
+                        <span>Philosophy</span>
+                    </div>
+                    <div class="interest-pill">
+                        <span class="interest-icon">⚪</span>
+                        <span>Advanced Mathematics & Physics</span>
+                    </div>
+                    <div class="interest-pill">
+                        <span class="interest-icon">⚪</span>
+                        <span>Politics & International Affairs</span>
+                    </div>
+                    <div class="interest-pill">
+                        <span class="interest-icon">⚪</span>
+                        <span>Activism</span>
+                    </div>
+                    <div class="interest-pill">
+                        <span class="interest-icon">⚪</span>
+                        <span>Literary Writing</span>
+                    </div>
+                    <div class="interest-pill">
+                        <span class="interest-icon">⚪</span>
+                        <span>3D Modeling</span>
+                    </div>
+                    <div class="interest-pill">
+                        <span class="interest-icon">⚪</span>
+                        <span>Using Software for Real-World Solutions</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. Contacts Section -->
+        <section id="contacts">
+            <div class="container">
+                <div class="contacts-wrapper">
+                    <h2 class="section-title">Get in <span>Touch.</span></h2>
+                    <p>Feel free to reach out through any of the channels below.</p>
+                    <div class="contacts-grid">
+                        <!-- GitHub -->
+                        <a href="https://github.com/stephenopara1" target="_blank" rel="noopener noreferrer" class="contact-card">
+                            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            <span>GitHub</span>
+                      
+                        </a>
+
+                        <!-- Email -->
+                        <a href="mailto:stephenopara405@gmail.com" class="contact-card">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <span>Email</span>
+   
+                        </a>
+
+                        <!-- Phone -->
+                        <a href="tel:+2348136066978" class="contact-card">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            <span>Phone</span>
+                      
+                        </a>
+
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/2348136066978" target="_blank" rel="noopener noreferrer" class="contact-card">
+                            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                            <span>WhatsApp</span>
+            
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Stephen Opara (Xparkwave Studio). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" aria-label="Back to top">↑</button>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Back to top button visibility & action
+        const backToTopBtn = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Active navigation link highlighting on scroll
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
